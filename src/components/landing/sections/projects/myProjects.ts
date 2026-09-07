@@ -20,6 +20,28 @@ export const myProjects: Project[] = [
       { id: "4", name: "Floating-UI" },
     ],
   },
+
+  {
+    id: "5",
+    title: "Digital-monument",
+    image: "monument.png",
+    link: "https://github.com/Erksery/digital-monument",
+    description:
+      "Веб-платформа для сохранения и почтения памяти об ушедших людях. Проект позволяет создавать персональные страницы памяти с биографией, фотографиями, памятными датами и историями. Особое внимание уделено интерактивному редактированию материалов и удобству навигации, чтобы близкие могли легко сохранять семейную историю, делиться воспоминаниями и поддерживать цифровую память о важных людях.",
+    languages: [
+      { id: "1", name: "TypeScript", ratio: 66.9 },
+      { id: "2", name: "SCSS", ratio: 20.1 },
+      { id: "3", name: "Astro", ratio: 11.1 },
+    ],
+    technologies: [
+      { id: "1", name: "Mantine" },
+      { id: "2", name: "React-Query" },
+      { id: "3", name: "Astro" },
+      { id: "3", name: "React" },
+      { id: "3", name: "motion" },
+      { id: "3", name: "MDXeditor" },
+    ],
+  },
   {
     id: "2",
     title: "ArtTech Production",
@@ -41,6 +63,25 @@ export const myProjects: Project[] = [
       { id: "6", name: "dnd-kit" },
     ],
   },
+
+  {
+    id: "4",
+    title: "CoffeShop",
+    image: "coffe.png",
+    link: "https://github.com/Erksery/CoffeeShop",
+    description:
+      "Мобильное приложение для кофейни, созданное как первый практический опыт разработки на React Native без использования дополнительного фреймворка. Приложение объединяет каталог кофейных напитков, информацию о товарах и основные сценарии взаимодействия с магазином. Проект стал практикой разработки мобильного интерфейса и работы с особенностями React Native на базовом уровне.",
+    languages: [
+      { id: "1", name: "JavaScript", ratio: 80.3 },
+      { id: "2", name: "Java", ratio: 8.3 },
+      { id: "3", name: "TypeScript", ratio: 5.2 },
+    ],
+    technologies: [
+      { id: "1", name: "React Native" },
+      { id: "2", name: "Firebase" },
+      { id: "3", name: "Redux" },
+    ],
+  },
   {
     id: "3",
     title: "React-chat",
@@ -59,24 +100,6 @@ export const myProjects: Project[] = [
       { id: "3", name: "SASS" },
       { id: "4", name: "Redux" },
       { id: "5", name: "motion" },
-    ],
-  },
-  {
-    id: "4",
-    title: "CoffeShop",
-    image: "coffe.png",
-    link: "https://github.com/Erksery/CoffeeShop",
-    description:
-      "Мобильное приложение для кофейни, созданное как первый практический опыт разработки на React Native без использования дополнительного фреймворка. Приложение объединяет каталог кофейных напитков, информацию о товарах и основные сценарии взаимодействия с магазином. Проект стал практикой разработки мобильного интерфейса и работы с особенностями React Native на базовом уровне.",
-    languages: [
-      { id: "1", name: "JavaScript", ratio: 80.3 },
-      { id: "2", name: "Java", ratio: 8.3 },
-      { id: "3", name: "TypeScript", ratio: 5.2 },
-    ],
-    technologies: [
-      { id: "1", name: "React Native" },
-      { id: "2", name: "Firebase" },
-      { id: "3", name: "Redux" },
     ],
   },
 ];
