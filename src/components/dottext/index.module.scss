@@ -1,0 +1,35 @@
+.dot_text_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 100%;
+}
+
+.dot_text {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+  font-family: "Arial Black", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: transparent;
+  font-size: clamp(2.5rem, 12vw, 8rem);
+  letter-spacing: 1;
+  line-height: 0.8;
+
+  background-image: radial-gradient(#4f4f4f 1px, transparent 1px);
+  background-size: 6px 6px;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .dot_text {
+    background-size: 4px 4px;
+    background-image: radial-gradient(#4f4f4f 0.6px, transparent 0.6px);
+  }
+}

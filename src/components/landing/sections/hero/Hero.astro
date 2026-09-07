@@ -1,0 +1,73 @@
+---
+import ScrollDown from "@/components/scroll/ScrollDown.astro";
+import styles from "./index.module.scss";
+import DistortedImage from "@/components/shaders/ImageShader";
+import Cursor from "@/layouts/Cursor.astro";
+import { DotText } from "@/components/dottext/DotText";
+
+const stack = [
+  { text: "React", color: "#58C4DC" },
+  { text: "Astro", color: "#E53AA1" },
+  { text: "NestJS", color: "#E0234E" },
+  { text: "Prisma", color: "#2D3748" },
+  { text: "PostgreSQL", color: "#336791" },
+  { text: "TypeScript", color: "#3178C6" },
+];
+---
+
+<section id="hero" class={styles.hero_section}>
+  <div class={styles.hero}>
+    <div class={styles.box_container}>
+      <div class={styles.max_container}>
+        <p class={styles.tag_name}>VITALY MOSHKOV</p>
+        <h1>Виталий Мошков<Cursor width="20px" height="5px" /></h1>
+
+        <div class={styles.skill}>
+          <p>FULL-STACK DEVELOPER</p>
+        </div>
+
+        <span class={styles.description}>
+          Разрабатываю современные веб-приложения — от продуманных
+          frontend-интерфейсов до масштабируемого backend на NestJS. Работаю с
+          архитектурой, API, базами данных и пользовательским интерфейсом.
+        </span>
+        <div class={styles.stack}>
+          <p>MAIN-STACK</p>
+          <h3>Основной стек</h3>
+          <hr class={styles.stack_line} />
+          <div class={styles.stack_list}>
+            {
+              stack.map((item) => (
+                <div class={styles.item}>
+                  [
+                  <hr
+                    class={styles.line}
+                    style={`background-color: ${item.color}`}
+                  />
+                  {item.text}]
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class={styles.buttons_list}>
+          <a href="#about" class={styles.details}>>Подробнее</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+      </div>
+    </div>
+    <div class={styles.background}>
+      <DistortedImage
+        client:only="react"
+        src={`${import.meta.env.BASE_URL}ava2.jpg`}
+        asciiFontSize={12}
+        asciiFps={30}
+        maxAsciiColumns={180}
+        enableWaves={false}
+      />
+    </div>
+  </div>
+
+  <ScrollDown id="#about" />
+</section>

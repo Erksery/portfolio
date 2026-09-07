@@ -1,23 +1,101 @@
+---
+import "@styles/global.css";
+import Header from "@/components/header/Header.astro";
+import Footer from "@components/footer/Footer.astro";
+import Background from "@/components/background/cell/Background.astro";
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Виталий Мошков</title>
+  </head>
+
+  <body>
+    <Background />
+
+    <header>
+      <Header />
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <Footer />
+    </footer>
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<script>
+  function initSectionNavigation() {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("main section[id]"),
+    );
+
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("header nav a[href^='#']"),
+    );
+
+    if (!sections.length || !links.length) {
+      console.log("Section navigation: elements not found");
+      return;
+    }
+
+    function updateActiveSection() {
+      const targetY = window.innerHeight * 0.3;
+
+      let activeSection: HTMLElement | null = null;
+      let minDistance = Infinity;
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top > targetY) {
+          continue;
+        }
+        const distance = Math.abs(rect.top - targetY);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeSection = section;
+        }
+      }
+
+      if (!activeSection) {
+        activeSection = sections[0];
+      }
+
+      const activeId = `#${activeSection.id}`;
+
+      console.log("active:", activeId);
+
+      links.forEach((link) => {
+        link.classList.toggle("active", link.hash === activeId);
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveSection, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateActiveSection);
+
+    updateActiveSection();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSectionNavigation);
+  } else {
+    initSectionNavigation();
+  }
+</script>

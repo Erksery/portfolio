@@ -1,0 +1,58 @@
+---
+import { Mail, PhoneCall } from "@lucide/astro";
+import styles from "./index.module.scss";
+import { DotText } from "@/components/dottext/DotText";
+---
+
+<section id="contacts" class="section">
+  <DotText text="MY CONTACTS" />
+
+  <div class={styles.contacts_list}>
+    <a href="tel:+79539036971" class={styles.contact}>
+      <div class={styles.contact_header}>
+        <div class={styles.icon_container}>
+          <PhoneCall size={32} />
+        </div>
+        <div>
+          <h3>Номер телефона</h3>
+          <p class="secondary_text">+79539036971</p>
+        </div>
+      </div>
+
+      <p class:list={[styles.description, "secondary_text"]}>
+        Звоните в любое время! Только не ночью, пожалуйста.
+      </p>
+    </a>
+    <a href="https://github.com/Erksery" target="_blank" class={styles.contact}>
+      <div class={styles.contact_header}>
+        <div class={styles.icon_container}>
+          <img src={`${import.meta.env.BASE_URL}/avatar.png`} />
+        </div>
+        <div>
+          <h3>Github</h3>
+          <p class="secondary_text">https://github.com/Erksery</p>
+        </div>
+      </div>
+
+      <p class:list={[styles.description, "secondary_text"]}>
+        Здесь я храню код, эксперименты и последствия некоторых архитектурных
+        решений.
+      </p>
+    </a>
+    <a href="mailto:vitalymoshk@gmail.com" class={styles.contact}>
+      <div class={styles.contact_header}>
+        <div class={styles.icon_container}>
+          <Mail size={32} />
+        </div>
+        <div>
+          <h3>E-mail</h3>
+          <p class="secondary_text">vitalymoshk@gmail.com</p>
+        </div>
+      </div>
+
+      <p class:list={[styles.description, "secondary_text"]}>
+        Пишите в любое время! Лишь бы сообщение не попало в "Спам".
+      </p>
+    </a>
+  </div>
+</section>

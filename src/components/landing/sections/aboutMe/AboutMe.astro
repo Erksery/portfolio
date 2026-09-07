@@ -1,0 +1,48 @@
+---
+import SectionHeader from "@/layouts/SectionHeader.astro";
+import styles from "./index.module.scss";
+
+import { StackAccordion } from "./StackAccordion";
+---
+
+<section id="about" class:list={[styles.about_section, "section"]}>
+  <SectionHeader icon="01" title="Подробнее обо мне" subTitle="$about_me" />
+  <div class={styles.container}>
+    <div class={styles.description}>
+      <span>
+        Мой путь в разработке начался ещё в 5 классе с изучения Python. Позже я
+        занялся робототехникой, где программировал Arduino, собирал роботов и
+        радиоуправляемые модели. Среди проектов был даже самостоятельно
+        собранный беспилотный самолёт — первый полёт, правда, закончился
+        неудачно из-за ошибки в логике управления.
+        <br />
+        После школы я перешёл в веб-разработку и начал с React. Постепенно расширил
+        стек до мобильной разработки и backend на Node.js и NestJS, чтобы иметь возможность
+        самостоятельно создавать продукт целиком — от интерфейса до серверной части.
+        <br />
+        Всё обучение проходил самостоятельно: документация, реальные проекты, Stack
+        Overflow и часы поиска решений. Такой подход сформировал моё главное правило
+        — если чего-то не знаешь, нужно не обходить проблему, а разобраться, как она
+        работает.
+      </span>
+
+      <div class={styles.gallery}>
+        <div class={styles.photo}>
+          <img src={`${import.meta.env.BASE_URL}/ava.jpg`} />
+        </div>
+        <div class={styles.photo}>
+          <img src={`${import.meta.env.BASE_URL}/stol.jpg`} />
+        </div>
+      </div>
+    </div>
+    <div class={styles.stack_container}>
+      <p class={styles.tag}>$MY_STACK</p>
+      <h2>Мой стек разработки</h2>
+      <p class="secondary_text">
+        Технологии и инструменты которые я постоянно использую
+      </p>
+
+      <StackAccordion client:only="react" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,119 @@
+---
+import { myProjects } from "./myProjects";
+import styles from "./index.module.scss";
+import { CircleSlash } from "@lucide/astro";
+
+function getLanguageColor(language: string) {
+  const colors: Record<string, string> = {
+    TypeScript: "#3178C6",
+    JavaScript: "#F7DF1E",
+    SCSS: "#CD6799",
+    CSS: "#1572B6",
+    HTML: "#E34F26",
+    React: "#61DAFB",
+    Vue: "#42B883",
+    Svelte: "#FF3E00",
+    Python: "#3776AB",
+    Rust: "#DEA584",
+    Go: "#00ADD8",
+    Java: "#ED8B00",
+    PHP: "#777BB4",
+    C: "#A8B9CC",
+    "C++": "#00599C",
+    "C#": "#68217A",
+  };
+
+  return colors[language] ?? "#888888";
+}
+---
+
+<div class={styles.projects__header}>
+  <div class={styles.projects__grid}>
+    {
+      myProjects.map((project) => (
+        <a href={project.link} target="_blank" class={styles.project_card}>
+          <article class={styles.project_card}>
+            <div class={styles.project_card__image_wrapper}>
+              {!project.image ? (
+                <div class={styles.image_container}>
+                  <CircleSlash size={56} />
+                </div>
+              ) : (
+                <img
+                  src={`${import.meta.env.BASE_URL}/${project.image}`}
+                  alt={project.title}
+                  class={styles.project_card__image}
+                  loading="lazy"
+                />
+              )}
+
+              <span class={styles.project_card__number}>0{project.id}</span>
+            </div>
+
+            <div class={styles.project_card__content}>
+              <div class={styles.project_card__title_row}>
+                <h3>{project.title}</h3>
+
+                <span class={styles.project_card__arrow}>↗</span>
+              </div>
+
+              <p class={styles.project_card__description}>
+                {project.description}
+              </p>
+
+              <div class={styles.project_card__languages}>
+                <div class={styles.project_card__section_label}>
+                  <span>LANGUAGES</span>
+
+                  <span>{project.languages.length}</span>
+                </div>
+
+                <div class={styles.language_bar}>
+                  {project.languages.map((language) => (
+                    <span
+                      class={styles.language_bar__segment}
+                      style={`
+                        width: ${language.ratio}%;
+                        background-color: ${getLanguageColor(language.name)};
+                      `}
+                      title={`${language.name}: ${language.ratio}%`}
+                    />
+                  ))}
+                </div>
+
+                <div class={styles.language_list}>
+                  {project.languages.map((language) => (
+                    <div class={styles.language}>
+                      <span
+                        class={styles.language__dot}
+                        style={`background-color: ${getLanguageColor(language.name)}`}
+                      />
+
+                      <span class={styles.language__name}>{language.name}</span>
+
+                      <span class={styles.language__ratio}>
+                        {language.ratio}%
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class={styles.project_card__technologies}>
+                <div class={styles.project_card__section_label}>
+                  <span>STACK</span>
+                </div>
+
+                <div class={styles.technology_list}>
+                  {project.technologies.map((technology) => (
+                    <span class={styles.technology}>{technology.name}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+      ))
+    }
+  </div>
+</div>

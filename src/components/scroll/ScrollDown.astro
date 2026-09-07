@@ -1,0 +1,15 @@
+---
+import styles from "./index.module.scss";
+import { ChevronDown } from "@lucide/astro";
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<a href={id} class={styles.scroll_down}>
+  <p class="tag">SCROLL DOWN</p>
+  <ChevronDown size={18} color="#d9d900" />
+</a>

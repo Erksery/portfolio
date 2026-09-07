@@ -1,0 +1,47 @@
+---
+interface Props {
+  width?: string;
+  height?: string;
+  color?: string;
+}
+
+const { width = "2px", height = "1em", color = "currentColor" } = Astro.props;
+---
+
+<span
+  class="cursor"
+  style={`--cursor-width: ${width}; --cursor-height: ${height}; --cursor-color: ${color};`}
+  aria-hidden="true"></span>
+
+<style>
+  .cursor {
+    display: inline-block;
+    flex-shrink: 0;
+    margin-left: 3px;
+    width: var(--cursor-width);
+    height: var(--cursor-height);
+    background-color: var(--cursor-color);
+
+    animation: blink 1s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    35% {
+      opacity: 1;
+    }
+
+    45% {
+      opacity: 0;
+    }
+
+    75% {
+      opacity: 0;
+    }
+
+    85%,
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
